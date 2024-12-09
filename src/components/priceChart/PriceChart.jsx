@@ -1,19 +1,25 @@
 import { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, Brush } from 'recharts';
-import styles from "./priceChart.module.css";
 import { ResponsiveContainer } from 'recharts';
+import styles from "./priceChart.module.css";
+import PriceModelPopup from './priceActionInformation/PriceActionInformation';
 import {
     Play,
     Pause,
     Settings,
     TrendingUp,
-    MoveUp,
-    Activity
+    CircleHelp
 } from 'lucide-react';
 
 const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token }) => {
+    const [isReadingMore, setIsReadingMore] = useState(false);  // Track whether the popup is visible or not
     const minPrice = Math.min(...priceHistory.map(item => item.price));
     const maxPrice = Math.max(...priceHistory.map(item => item.price));
+
+    const handleReadMore = (state) => {
+        setIsReadingMore(state);  // Toggle the state
+    }
+
     const priceChart = (
         <LineChart
             width={800}
@@ -119,13 +125,25 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
     return (
         <div className={styles.priceChartPanel}>
             <div className={styles.panelHeader}>
-                <h2>Bonding Curve Price Sim<span><TrendingUp /></span></h2>
+                <h2>Bonding Curve Price Simulator
+                    <span className={styles.span}><TrendingUp /></span>
+
+                    <span className={`${styles.readMore}`}>
+                        <CircleHelp
+                            onClick={() => handleReadMore(true)}
+                            width={20}
+                            color='white'
+                        />
+                    </span>
+                </h2>
             </div>
+
             <div className={styles.chartContainer}>
                 <ResponsiveContainer width="100%" height={300}>
                     {priceChart}
                 </ResponsiveContainer>
             </div>
+
             <div className={styles.statRow}>
                 <Play
                     className={styles.startSimBtn}
@@ -136,19 +154,7 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
                 </Play>
 
                 <div className={styles.selectContainer}>
-                    {/* <label htmlFor="curveSelect" className={styles.selectLabel}>Select Bonding Curve</label> */}
-                    {/* <select
-                        id="curveSelect"
-                        value={selectedCurve}
-                        onChange={handleCurveChange}
-                        aria-label="Choose a bonding curve"
-                    >
-                        {Object.keys(bondingCurves).map((curveKey) => (
-                            <option key={curveKey} value={curveKey}>
-                                {curveNames[curveKey] || curveKey}
-                            </option>
-                        ))}
-                    </select> */}
+                    {/* <select> or other controls can go here */}
                 </div>
 
                 <Pause
@@ -161,12 +167,9 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
                 <Settings />
             </div>
 
-            {/* Display the selected curve */}
-            {/* <div className={styles.selectedCurveDisplay}>
-                <strong>Selected Curve:</strong> {curveNames[selectedCurve] || 'Unknown Curve'}
-            </div> */}
-
-        </div >
+            {/* Conditionally render the PriceModelPopup based on isReadingMore */}
+            {isReadingMore && <PriceModelPopup setVisibility={setIsReadingMore} />}
+        </div>
     );
 };
 

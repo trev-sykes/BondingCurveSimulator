@@ -62,3 +62,8 @@ select:focus {
     border-color: #00FF00;
     box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.2);
 }
+
+.readMore {
+    margin-left: 15px;
+    cursor: pointer;
+}
