@@ -24,10 +24,10 @@ const TokenOverview = ({ name, price, latestPrice, lastTradeType, token }) => {
                         {lastTradeType}{lastTradeType == 'buy' ? <MoveUp height={10} /> : <MoveDown height={10} />}
                     </span>
                 </div>
-                <div className={styles.statRow}>
+                {/* <div className={styles.statRow}>
                     <span>Max Supply:</span>
                     <span >{token?.getTokenState()?.totalSupply}</span>
-                </div>
+                </div> */}
             </div>
         </div>
     )
