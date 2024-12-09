@@ -15,6 +15,11 @@
     /* Prevent content from overflowing */
 }
 
+.startSimBtn {
+    background-color: #00FF00;
+    color: black;
+}
+
 .header {
     display: flex;
     justify-content: space-between;

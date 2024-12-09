@@ -1,0 +1,29 @@
+.panel {
+    border: 1px solid #00FF00;
+    flex-shrink: 0;
+    /* Prevent shrinking of panels */
+}
+
+.panelHeader {
+    background-color: rgba(0, 255, 0, 0.1);
+    padding: 5px;
+    border-bottom: 1px solid #00FF00;
+}
+
+.panelHeader h2 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.panelContent {
+    padding: 15px;
+}
+
+.buyTrades {
+    color: #00FF00;
+}
+
+.sellTrades {
+    color: #f82f2f;
+}

@@ -1,0 +1,64 @@
+.statRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    /* Consistent gap between elements */
+    margin-bottom: 15px;
+}
+
+.startSimBtn,
+.pauseSimBtn {
+    font-weight: 700;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.startSimBtn {
+    background-color: #00FF00;
+    color: #333;
+}
+
+.pauseSimBtn {
+    background-color: #00FF00;
+    color: #333;
+}
+
+.startSimBtn:hover,
+.pauseSimBtn:hover {
+    opacity: 0.9;
+}
+
+.startSimBtn:focus,
+.pauseSimBtn:focus {
+    outline: 2px solid #00FF00;
+    outline-offset: 2px;
+}
+
+.selectContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selectLabel {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+select {
+    padding: 8px 12px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}
+
+select:focus {
+    border-color: #00FF00;
+    box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.2);
+}
