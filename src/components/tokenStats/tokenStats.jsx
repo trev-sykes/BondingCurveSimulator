@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import styles from './tokenStats.module.css';
-import TokenizedAssetBondingCurve from '../../TokenizedAsset/simpleToken.js';
+import TokenizedAssetBondingCurve from '../../TokenizedAsset/Token.js';
 
 import TradeActiviy from '../tradeActivity/TradeActivity.jsx';
 import TradeVolume from "../tradeVolume/TradeVolume.jsx";
@@ -120,7 +120,6 @@ const TokenStatsDashboard = () => {
             </div>
         );
     }
-
     return (
         <div className={styles.container}>
             <div className={styles.header}>

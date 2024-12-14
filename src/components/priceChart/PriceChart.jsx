@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token }) => {
-    const [isReadingMore, setIsReadingMore] = useState(false);  // Track whether the popup is visible or not
+    const [isReadingMore, setIsReadingMore] = useState(true);  // Track whether the popup is visible or not
     const minPrice = Math.min(...priceHistory.map(item => item.price));
     const maxPrice = Math.max(...priceHistory.map(item => item.price));
 
@@ -20,19 +20,40 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
         setIsReadingMore(state);  // Toggle the state
     }
 
+    // Calculate price change percentage function
+    const calculatePriceChangePercentage = (index) => {
+        // Check if priceHistory has enough data to avoid accessing undefined elements
+        if (!priceHistory || priceHistory.length === 0 || !priceHistory[index] || !priceHistory[index - 1]) {
+            return 0; // Return 0 if there's no previous data to compare to
+        }
+
+        const previousPrice = priceHistory[index - 1].price;
+        const currentPrice = priceHistory[index].price;
+
+        if (previousPrice === 0) return 0; // Avoid division by zero
+
+        // Correct price change calculation
+        return ((currentPrice - previousPrice) / previousPrice) * 100;
+    };
+
     const priceChart = (
         <LineChart
             width={800}
-            height={400}
+            height={350}
             data={priceHistory}
-            margin={{ top: 20, right: 30, left: 20, bottom: 50 }}
+            margin={{ top: 10, right: 30, left: 20, bottom: 50 }}
         >
             {/* Grid with more subtle coloring */}
             <CartesianGrid
                 strokeDasharray="3 3"
                 stroke="#2C3E50"
                 fill="#1C2833"
-                fillOpacity={0.1}
+                fillOpacity={0.75}
+            />
+            <Brush
+                dataKey="timestamp"
+                height={10}
+                stroke="#aaaaaa"
             />
 
             {/* X-Axis with rotated labels for better readability */}
@@ -70,17 +91,27 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
                     borderColor: '#00FF00',
                     color: '#00FF00'
                 }}
-                formatter={(value, name, props) => [
-                    value.toFixed(4),
-                    name === 'price' ? 'Price' : name
-                ]}
+                formatter={(value, name, props) => {
+                    const index = props.index;
+                    const priceChangePercentage = calculatePriceChangePercentage(index);
+
+                    return [
+                        `${value.toFixed(4)} ${name === 'price' ? 'Price' : name}`,
+                        `Price Change: ${priceChangePercentage.toFixed(2)}%`
+                    ];
+                }}
             />
 
-            {/* Legend with better positioning */}
+            {/* Legend showing the current price */}
             <Legend
                 verticalAlign="top"
                 height={36}
                 iconType="circle"
+                formatter={(value, entry, index) => {
+                    // Get the current price (last price in the array)
+                    const currentPrice = priceHistory[priceHistory.length - 1]?.price;
+                    return currentPrice ? `Current Price: $${currentPrice.toFixed(2)}` : 'No Data';
+                }}
             />
 
             {/* Main Price Line with more dynamic styling */}
@@ -95,13 +126,6 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
                     strokeWidth: 3,
                     r: 6
                 }}
-            />
-
-            {/* Optional Brush for zooming and panning */}
-            <Brush
-                dataKey="timestamp"
-                height={30}
-                stroke="#00FF00"
             />
         </LineChart>
     );

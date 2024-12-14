@@ -7,6 +7,14 @@
     margin-bottom: 15px;
 }
 
+.panelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    background: radial-gradient(circle at center, rgb(33, 33, 33) 10%, rgba(0, 0, 0, 0.421) 90%);
+}
+
 .startSimBtn,
 .pauseSimBtn {
     font-weight: 700;
