@@ -66,7 +66,7 @@ const TokenStatsDashboard = () => {
         // Update trade history (last 20 trades)
         setTradeHistory(prevHistory => {
             const updatedHistory = [...prevHistory, newTrade];
-            return updatedHistory.slice(-20); // Keep last 20 trades
+            return updatedHistory; // Keep last 20 trades
         });
 
         setLoading(false);
@@ -77,7 +77,7 @@ const TokenStatsDashboard = () => {
 
         setSimulationRunning(true);
         intervalIdRef.current = setInterval(() => {
-            let tradeType = Math.random() > 0.49 ? 'buy' : 'sell';
+            let tradeType = Math.random() > 0.41 ? 'buy' : 'sell';
             let amount = Math.floor(Math.random() * 100) + 1;
 
             handleTrade(tradeType, amount);

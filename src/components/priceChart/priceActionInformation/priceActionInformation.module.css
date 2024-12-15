@@ -73,3 +73,21 @@
 .closeBtn:hover {
     color: #e74c3c;
 }
+
+@media (max-width: 500px) {
+    .popupContent {
+        overflow: scroll;
+        background-color: #1e1e1e;
+        color: #a8d5ba;
+        padding: 20px;
+        width: 80%;
+        height: 95vh;
+        max-width: 500px;
+        border-radius: 10px;
+        position: relative;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+
+    }
+}
