@@ -31,9 +31,14 @@ export default class PriceManager {
         else
             return this.currentPriceModel(this.initialPrice, this.scalingFactor, this.currentSupply);
     }
+
     changePriceModel(option) {
-        let l = this.bondingCurves[option];
-        this.currentPriceModel = l;
+        if (!this.bondingCurves.hasOwnProperty(option)) {
+            console.error(`Invalid price model option: ${option}. Defaulting to 'log' model.`);
+            this.currentPriceModel = this.bondingCurves.log;
+            return;
+        }
+        this.currentPriceModel = this.bondingCurves[option];
     }
 
     updatePrice(action, amount) {

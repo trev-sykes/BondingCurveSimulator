@@ -4,15 +4,14 @@ import PriceManager from "./priceManager/priceManager.js";
 
 export default class TokenizedAssetBondingCurve {
 
-    constructor(name = 'Bitcoin', totalSupply = 21000000, seedAmount = 10000, maxHistory = 2016, scalingFactor = 9, burnMultiplier = 0.03, volumeWindow = 2016, options = {}, tradeRun = 10000) {
+    constructor(name = 'Default Token', totalSupply = 21000000, seedAmount = 10000, maxHistory = 2016, scalingFactor = 9, options = {}) {
         this.name = name;
         this.priceManager = options.priceManager || new PriceManager(maxHistory, scalingFactor, totalSupply, seedAmount);
     }
     _processTrade(action, amount) {
         console.log("Trade Start");
         this.priceManager.updatePrice(action, amount);
-        let _action = action == 'buy' ? 'BUY' : 'SELL';
-        console.log("Trade Complete");
+        console.log("Trade Complete")
     }
 
     buyTokens(amount) {
@@ -32,14 +31,13 @@ export default class TokenizedAssetBondingCurve {
     getPrice() {
         return this.priceManager.currentPrice;
     }
-    getBondingTokens() {
-        return this.priceManager.bondingCurves;
-    }
 
     getTokenState() {
 
         return {
             initialPrice: this.priceManager.initialPrice,
+            initialSupply: this.priceManager.initialSupply,
+            currentPriceModel: this.priceManager.currentPriceModel,
             currentPrice: this.priceManager.currentPrice,
             currentSupply: this.priceManager.currentSupply,
             totalSupply: this.priceManager.totalSupply,

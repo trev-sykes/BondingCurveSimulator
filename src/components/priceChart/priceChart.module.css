@@ -1,49 +1,41 @@
-.statRow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    /* Consistent gap between elements */
-    margin-bottom: 15px;
+/* Container Styles */
+.priceChartPanel {
+    background-color: #1A1A1A;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Header Styles */
 .panelHeader {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid white;
-    background: radial-gradient(circle at center, rgb(33, 33, 33) 10%, rgba(0, 0, 0, 0.421) 90%);
+    border: 1px solid #333;
+    background: linear-gradient(145deg, #333, #111);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    color: #fff;
 }
 
-.startSimBtn,
-.pauseSimBtn {
-    font-weight: 700;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.panelHeader h2 {
+    font-size: 1.5rem;
+    color: #fff;
 }
 
-.startSimBtn {
-    background-color: #00FF00;
-    color: #333;
+.panelHeader .span {
+    margin-left: 8px;
+    color: #FF007F;
 }
 
-.pauseSimBtn {
-    background-color: #00FF00;
-    color: #333;
-}
-
-.startSimBtn:hover,
-.pauseSimBtn:hover {
-    opacity: 0.9;
-}
-
-.startSimBtn:focus,
-.pauseSimBtn:focus {
-    outline: 2px solid #00FF00;
-    outline-offset: 2px;
+/* Stat Row Styles */
+.statRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 15px;
 }
 
 .selectContainer {
@@ -53,24 +45,57 @@
 }
 
 .selectLabel {
-    margin-bottom: 5px;
+    color: #fff;
     font-size: 14px;
-    font-weight: 600;
 }
 
 select {
-    padding: 8px 12px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid #1DB954;
+    border-radius: 8px;
+    background-color: #2C353A;
+    color: #1DB954;
     font-size: 14px;
     outline: none;
 }
 
 select:focus {
-    border-color: #00FF00;
-    box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.5);
 }
 
+/* Button Styles */
+.startSimBtn,
+.pauseSimBtn {
+    font-weight: 700;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.startSimBtn {
+    background-color: #1DB954;
+    color: #fff;
+}
+
+.pauseSimBtn {
+    background-color: #FF007F;
+    color: #fff;
+}
+
+.startSimBtn:hover,
+.pauseSimBtn:hover {
+    opacity: 0.85;
+}
+
+.startSimBtn:focus,
+.pauseSimBtn:focus {
+    outline: 2px solid #1DB954;
+    outline-offset: 2px;
+}
+
+/* Read More Button */
 .readMore {
     margin-left: 15px;
     cursor: pointer;

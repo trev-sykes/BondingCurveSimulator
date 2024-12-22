@@ -39,27 +39,27 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
     const priceChart = (
         <LineChart
             width={800}
-            height={350}
+            height={200}
             data={priceHistory}
             margin={{ top: 10, right: 30, left: 20, bottom: 50 }}
         >
             {/* Grid with more subtle coloring */}
             <CartesianGrid
                 strokeDasharray="3 3"
-                stroke="#2C3E50"
-                fill="#1C2833"
-                fillOpacity={0.75}
+                stroke="#3E4A59"
+                fill="#2C353A"
+                fillOpacity={0.85}
             />
             <Brush
                 dataKey="timestamp"
                 height={10}
-                stroke="#aaaaaa"
+                stroke="#AAAAAA"
             />
 
             {/* X-Axis with rotated labels for better readability */}
             <XAxis
                 dataKey="timestamp"
-                stroke="#00FF00"
+                stroke="#1DB954"
                 angle={-45}
                 textAnchor="end"
                 interval="preserveStartEnd"
@@ -68,7 +68,7 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
 
             {/* Y-Axis with more precise formatting */}
             <YAxis
-                stroke="#00FF00"
+                stroke="#1DB954"
                 domain={[
                     Math.floor(minPrice - (maxPrice - minPrice) * 0.1),
                     Math.ceil(maxPrice + (maxPrice - minPrice) * 0.1)
@@ -79,8 +79,8 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
             {/* Reference Line for Average Price */}
             <ReferenceLine
                 y={priceHistory.reduce((sum, item) => sum + item.price, 0) / priceHistory.length}
-                label="Average Price"
-                stroke="#FF4500"
+                label="Avg Price"
+                stroke="#FF007F"
                 strokeDasharray="3 3"
             />
 
@@ -88,8 +88,8 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
             <Tooltip
                 contentStyle={{
                     backgroundColor: 'rgba(0,0,0,0.8)',
-                    borderColor: '#00FF00',
-                    color: '#00FF00'
+                    borderColor: '#1DB954',
+                    color: '#1DB954'
                 }}
                 formatter={(value, name, props) => {
                     const index = props.index;
@@ -120,9 +120,9 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
                 dataKey="price"
                 stroke="white"
                 strokeWidth={2}
-                dot={{ stroke: '#00FF00', strokeWidth: 2, r: 4 }}
+                dot={{ stroke: '#1DB954', strokeWidth: 2, r: 4 }}
                 activeDot={{
-                    stroke: '#FF4500',
+                    stroke: '#FF007F',
                     strokeWidth: 3,
                     r: 6
                 }}
