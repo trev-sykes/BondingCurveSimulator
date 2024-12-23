@@ -11,12 +11,12 @@ const TokenOverview = ({ name, price, latestPrice, lastTradeType, token }) => {
             </div>
             <div className={styles.panelContent}>
                 <div className={styles.statRow}>
-                    <span>Name:</span>
-                    <span>{name || 'Unknown'}</span>
+                    <span>Current Curve:</span>
+                    <span className={styles.title}>{name ? name : 'Unknown'}</span>
                 </div>
                 <div className={styles.statRow}>
                     <span>Latest Trade Price:</span>
-                    <span>{latestPrice ? `$${latestPrice.toFixed(2)}` : 'N/A'}</span>
+                    <span className={styles.title}>{latestPrice ? `$${latestPrice.toFixed(2)}` : 'N/A'}</span>
                 </div>
                 <div className={styles.statRow}>
                     <span>Latest Trade Type:</span>

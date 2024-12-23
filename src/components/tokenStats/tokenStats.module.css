@@ -20,22 +20,17 @@
     color: black;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #00FF00;
-    padding-bottom: 3px;
-    margin-bottom: 6px;
-}
+
 
 .title {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.5em;
+
 }
 
 .gridContainer {
-    min-height: 100px;
+    min-height: 125px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;

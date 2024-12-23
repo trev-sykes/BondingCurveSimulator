@@ -41,7 +41,7 @@ const PriceChart = ({ priceHistory, startTradeSimulation, pauseSimulation, token
             width={800}
             height={200}
             data={priceHistory}
-            margin={{ top: 10, right: 30, left: 20, bottom: 50 }}
+            margin={{ top: 10, right: 30, left: 20, bottom: 30 }}
         >
             {/* Grid with more subtle coloring */}
             <CartesianGrid

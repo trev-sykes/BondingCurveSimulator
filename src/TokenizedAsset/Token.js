@@ -31,6 +31,13 @@ export default class TokenizedAssetBondingCurve {
     getPrice() {
         return this.priceManager.currentPrice;
     }
+    getCurrentPriceModel() {
+
+        return this.priceManager.currentPriceModel;
+    }
+    getCurrentPriceModelString() {
+        return this.priceManager.priceModelString;
+    }
 
     getTokenState() {
 

@@ -122,14 +122,10 @@ const TokenStatsDashboard = () => {
     }
     return (
         <div className={styles.container}>
-            <div className={styles.header}>
-                <h1 className={styles.title}>TOKEN ANALYSIS DASHBOARD</h1>
-                <div>{new Date().toLocaleString()}</div>
-            </div>
             <div className={styles.gridContainer}>
                 {/* Token Overview Panel */}
                 <TokenOverview
-                    name={token.name}
+                    name={token?.getCurrentPriceModelString()}
                     price={token?.getPrice()}
                     latestPrice={token.getPrice()}
                     lastTradeType={lastTradeTypeRef.current}

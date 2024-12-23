@@ -15,6 +15,7 @@ export default class PriceManager {
         this.priceHistory = [];
         this.bondingCurves = bondingCurves;
         this.currentPriceModel = this.bondingCurves.log;
+        this.priceModelString = 'Logarithmic';
         this.scalingFactor = scalingFactor;
         this.initialPrice = Math.log(scalingFactor * seedAmount + 1);
         this.currentPrice = this.initialPrice;
@@ -39,6 +40,7 @@ export default class PriceManager {
             return;
         }
         this.currentPriceModel = this.bondingCurves[option];
+        this.priceModelString = option == "log" ? "Logarithmic" : "Linear"
     }
 
     updatePrice(action, amount) {
